@@ -1,0 +1,96 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Vice Heat Studio — Multi-Panel Cover Art Maker</title>
+<link rel="stylesheet" href="./style.css">
+</head>
+<body>
+<header class="topbar">
+  <div class="brand">
+    <span class="brand-mark">VH</span>
+    <div class="brand-words">
+      <h1>Vice Heat <em>Studio</em></h1>
+      <p>Turn a photo into multi-panel cover art</p>
+    </div>
+  </div>
+  <div class="top-actions">
+    <span class="badge">100% original art</span>
+    <button id="exportBtnTop" type="button" class="btn-export small">Export PNG</button>
+  </div>
+</header>
+
+<main class="workspace">
+  <aside class="controls">
+    <section class="group">
+      <h2><span class="step">1</span> Photos</h2>
+      <label class="drop-label" for="photoFiles">
+        <strong>Add your photos</strong>
+        <small>Click to browse, or drop files on the canvas</small>
+      </label>
+      <input id="photoFiles" type="file" accept="image/*" multiple hidden>
+      <div id="thumbs" class="thumbs"></div>
+      <p class="hint">Click a thumbnail to put it in the selected panel.</p>
+    </section>
+
+    <section class="group">
+      <h2><span class="step">2</span> Layout</h2>
+      <div id="layoutSeg" class="seg-grid"></div>
+    </section>
+
+    <section class="group">
+      <h2><span class="step">3</span> Colour grade</h2>
+      <div id="gradeSeg" class="seg-grid"></div>
+    </section>
+
+    <section class="group">
+      <h2><span class="step">4</span> Headline</h2>
+      <label class="field">Title
+        <input id="titleInput" type="text" maxlength="24" value="VICE HEAT">
+      </label>
+      <label class="field">Subtitle
+        <input id="subtitleInput" type="text" maxlength="42" value="WELCOME TO NEON SHORES">
+      </label>
+      <label class="field slider">Headline tilt <span id="tiltVal">-2°</span>
+        <input id="tilt" type="range" min="-5" max="5" step="0.5" value="-2">
+      </label>
+    </section>
+
+    <section class="group">
+      <h2><span class="step">5</span> Panel</h2>
+      <div id="panelChips" class="chips"></div>
+      <label class="field">Photo in this panel
+        <select id="panelPhoto"></select>
+      </label>
+      <label class="field slider">Zoom <span id="zoomVal">115%</span>
+        <input id="zoom" type="range" min="100" max="320" step="1" value="115">
+      </label>
+      <p class="hint">Tip: drag the photo inside its panel to reposition it.</p>
+    </section>
+
+    <section class="group export-group">
+      <h2><span class="step">6</span> Export</h2>
+      <label class="field">PNG size
+        <select id="sizeSelect">
+          <option value="1080x1350" selected>1080 × 1350 · Portrait poster</option>
+          <option value="1080x1080">1080 × 1080 · Square</option>
+          <option value="1920x1080">1920 × 1080 · Wide banner</option>
+        </select>
+      </label>
+      <button id="exportBtn" type="button" class="btn-export">⬇ Export cover as PNG</button>
+      <p id="status" class="status" role="status">Loading the studio…</p>
+    </section>
+  </aside>
+
+  <section class="stage" id="stage">
+    <div class="canvas-wrap">
+      <canvas id="cover" width="864" height="1080" aria-label="Your cover art"></canvas>
+    </div>
+    <p class="stage-hint">Drag a photo inside its panel to reposition · Click a panel to select it · Photo → cover in under a minute</p>
+  </section>
+</main>
+
+<script type="module" src="./src/main.js"></script>
+</body>
+</html>
